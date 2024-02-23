@@ -1,2 +1,1 @@
-# TheToDoList
-BackEnd for this thing
+# Todos on the command line
