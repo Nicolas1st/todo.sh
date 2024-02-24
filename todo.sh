@@ -87,7 +87,7 @@ draw_interface() {
     then
         echo "Use j/k keys to navigate"
         echo "Press a to add a new todo"
-        echo "Press d to remove the todo under the cursor"
+        echo "Press d to delete the todo under the cursor"
         echo "Press h to  the todo under the cursor"
         echo "Press q to quit"
     fi
