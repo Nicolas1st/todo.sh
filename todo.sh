@@ -57,16 +57,7 @@ delete_todo() {
     [ "$focused_todo_num" -lt 1 ] && return
     [ "$focused_todo_num" -gt "$todos_number" ] && return
 
-    local tmp_file=`mktemp`;
-
-    preseverve_number_of_lines_above=$((focused_todo_num-1))
-    cat $todo_file | head -"$preseverve_number_of_lines_above" >> $tmp_file
-
-    preseverve_number_of_lines_below=$((todos_number-focused_todo_num))
-    cat $todo_file | tail -"$preseverve_number_of_lines_below" >> $tmp_file
-
-    cat $tmp_file > $todo_file;
-    rm $tmp_file;
+    sed -i "${focused_todo_num}d" $todo_file
 
     ((todos_number--))
     if [ $focused_todo_num -gt $todos_number ]
