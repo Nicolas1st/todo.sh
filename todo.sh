@@ -134,6 +134,7 @@ do
             delete_todo
             ;;
         q)
+            clear
             exit
             ;;
     esac
