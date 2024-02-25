@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-todo_file='todos.txt'
+todo_file="$HOME/todos.txt"
 [ ! -e $todo_file ] && touch $todo_file
 
 green=`tput setaf 2`
