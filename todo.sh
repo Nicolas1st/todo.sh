@@ -6,7 +6,7 @@ todo_file="$HOME/todos.txt"
 green=$(tput setaf 2)
 reset=$(tput sgr0)
 
-color_text_green() {
+echo_green() {
     echo "${green}$*${reset}"
 }
 
@@ -50,7 +50,7 @@ toggle_help() {
 
 add_todo() {
     clear
-    read -p "$(color_text_green "TODO: ")" todo
+    read -p "$(echo_green "TODO: ")" todo
     [ -n "$todo" ] && echo "$todo" >> "$todo_file";
 }
 
@@ -95,7 +95,7 @@ draw_interface() {
     do
         if [ "$count" -eq $focused_todo_num ] 
         then
-            echo $(color_text_green "$selected_todo_prefix$line")
+            echo_green "$selected_todo_prefix$line"
         else
             echo "$non_selected_todo_prefix$line"
         fi
