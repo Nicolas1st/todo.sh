@@ -7,7 +7,7 @@ green=`tput setaf 2`
 reset=`tput sgr0`
 
 color_text_green() {
-    echo "${green}$@${reset}"
+    echo "${green}$*${reset}"
 }
 
 # state
