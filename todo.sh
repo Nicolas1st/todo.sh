@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 todo_file="$HOME/todos.txt"
-[ ! -e $todo_file ] && touch $todo_file
+[ ! -e "$todo_file" ] && touch "$todo_file"
 
-green=`tput setaf 2`
-reset=`tput sgr0`
+green=$(tput setaf 2)
+reset=$(tput sgr0)
 
 color_text_green() {
     echo "${green}$*${reset}"
@@ -15,7 +15,7 @@ focused_todo_num=1
 show_help=true
 
 select_todo_above() {
-    todos_number=$(wc -l $todo_file | cut -f1 -d' ')
+    todos_number=$(wc -l "$todo_file" | cut -f1 -d' ')
 
     if [ "$focused_todo_num" -gt 1 ]
     then
@@ -26,7 +26,7 @@ select_todo_above() {
 }
 
 select_todo_below() {
-    todos_number=$(wc -l $todo_file | cut -f1 -d' ')
+    todos_number=$(wc -l "$todo_file" | cut -f1 -d' ')
 
     if [ "$focused_todo_num" -lt "$todos_number" ]
     then
@@ -55,20 +55,20 @@ add_todo() {
 }
 
 delete_todo() {
-    todos_number=$(wc -l $todo_file | cut -f1 -d' ')
+    todos_number=$(wc -l "$todo_file" | cut -f1 -d' ')
 
     [ "$focused_todo_num" -lt 1 ] && return
     [ "$focused_todo_num" -gt "$todos_number" ] && return
 
-    sed -i "${focused_todo_num}d" $todo_file
+    sed -i "${focused_todo_num}d" "$todo_file"
 
     ((todos_number--))
-    if [ $focused_todo_num -gt $todos_number ]
+    if [ $focused_todo_num -gt "$todos_number" ]
     then
         focused_todo_num=$todos_number
     fi
 
-    if [ $focused_todo_num -lt 1 ]
+    if [ "$focused_todo_num" -lt 1 ]
     then
         focused_todo_num=1
     fi
@@ -101,14 +101,14 @@ draw_interface() {
         fi
 
         ((count++))
-    done < $todo_file
+    done < "$todo_file"
     
 }
 
 while true
 do
     draw_interface
-    todos_number=$(wc -l $todo_file | cut -f1 -d' ')
+    todos_number=$(wc -l "$todo_file" | cut -f1 -d' ')
 
     read -rsn1 key
     case "$key" in
