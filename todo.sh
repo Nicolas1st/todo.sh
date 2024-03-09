@@ -30,7 +30,10 @@ select_todo_below() {
 
     if [ "$focused_todo_num" -lt "$todos_number" ]
     then
-        ((focused_todo_num++))
+        if [ "$todos_number" -ne 0 ]
+        then
+            ((focused_todo_num++))
+        fi
     else
         focused_todo_num=1
     fi
