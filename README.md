@@ -15,6 +15,9 @@ Press q to quit
 
 # Bash version
 GNU bash, version 5.1.16
+Maps were added to bash not that long ago,
+so potentially it's very likely to be the issue when running the script
+on machines with older versions.
 
 # Comfortable cli experience
 Add this to your .bashrc, .zshrc or the like
